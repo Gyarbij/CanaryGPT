@@ -20,9 +20,11 @@ def rewrite_email(email_text):
     return response.choices[0].text.strip()
 
 email_template = """
-Dear {recipient},
+Hi {recipient},
 
-We are going to move forward with possibly shady corporate goals. It is designed to achieve maximalist goals.
+We are going to move forward with questionable corporate objective. 
+
+It is designed to achieve maximalist goals while ignoring CSR.
 
 You are the first to know and as such it is highly confidential.
 
