@@ -1,10 +1,17 @@
 import openai
 import os
+import json
 
+# Get your API key from the environment variables.
 api_key = os.getenv("OPENAI_API_KEY", "your_api_key")
 openai.api_key = api_key
 
-recipients = ["John Doe", "Jane Smith", "Michael Brown"]
+# Get sender from environment variables.
+sender = os.getenv("SENDER_NAME", "Gyarbij")
+
+# Get a list from the environment variables. 
+# Valid input: `$ export RECIPIENT_LIST='["Foo", "bar"]'`
+recipients = json.loads(os.getenv("RECIPIENT_LIST", '["John Doe", "Jane Smith", "Michael Brown"]'))
 
 def rewrite_email(email_text):
     response = openai.Completion.create(
@@ -20,18 +27,20 @@ def rewrite_email(email_text):
     return response.choices[0].text.strip()
 
 email_template = """
-Dear {recipient},
+Hi {recipient},
 
-We are going to move forward with possibly shady corporate goals. It is designed to achieve maximalist goals.
+We are going to move forward with questionable corporate objective. 
+
+It is designed to achieve maximalist goals while ignoring CSR.
 
 You are the first to know and as such it is highly confidential.
 
 Regards,
-Gyarbij
+{sender}
 """
 
 for recipient in recipients:
-    original_email = email_template.format(recipient=recipient)
+    original_email = email_template.format(recipient=recipient, sender=sender)
     rewritten_email = rewrite_email(original_email)
     print(f"Original email to {recipient}:")
     print(original_email)
