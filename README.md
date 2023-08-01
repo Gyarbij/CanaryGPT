@@ -10,6 +10,7 @@ A python program that dynamically rewrites the text of an email, creating a uniq
 - [x] Initial release
 - [x] Generate unique email via rewrite prompt
 - [x] Create Docker
+- [x] Robust handling of environment variables and user inputs
 - [ ] Export csv with permutations and associated recipient 
 - [ ] Create Outlook plug-in
 - [ ] Create browser extention
