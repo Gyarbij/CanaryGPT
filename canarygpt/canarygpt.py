@@ -38,18 +38,8 @@ try:
         else:
             raise RuntimeError("No response from API")
 
-    email_template = """
-    Hi {recipient},
-
-    We are going to move forward with questionable corporate objective. 
-
-    It is designed to achieve maximalist goals while ignoring CSR.
-
-    You are the first to know and as such it is highly confidential.
-
-    Regards,
-    {sender}
-    """
+    # Get email template as user input
+    email_template = input("Please enter your email template:\n")
 
     for recipient in recipients:
         original_email = email_template.format(recipient=recipient, sender=sender)
